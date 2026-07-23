@@ -78,7 +78,6 @@
         position: fixed;
         inset: 0;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-        pointer-events: none;
         z-index: 0;
         opacity: 0.4;
       }
@@ -239,8 +238,23 @@
       .hero-content {
         position: relative;
         z-index: 2;
-        max-width: 950px;
+        max-width: 1240px;
+        width: 100%;
         margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 56px;
+        text-align: left;
+      }
+
+      .hero-left .hero-desc {
+        margin: 0;
+        max-width: 560px;
+      }
+
+      .hero-left .hero-actions {
+        justify-content: flex-start;
       }
 
       /* Availability Badge */
@@ -376,6 +390,276 @@
       .btn-ghost:hover {
         border-color: #7c6fff;
         color: white;
+      }
+
+      /* ── HERO PHONE MOCKUP ── */
+      .hero-right {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .phone-mockup {
+        position: relative;
+        width: 280px;
+      }
+
+      .phone-mockup::before {
+        content: "";
+        position: absolute;
+        inset: -70px;
+        background: radial-gradient(
+          circle,
+          rgba(124, 111, 255, 0.22),
+          transparent 70%
+        );
+        z-index: -1;
+        animation: heroFloat 9s ease-in-out infinite;
+      }
+
+      .phone-frame {
+        position: relative;
+        width: 280px;
+        height: 572px;
+        padding: 14px;
+        border-radius: 46px;
+        background: linear-gradient(160deg, #1c1c28, #0c0c12);
+        border: 1px solid var(--border2);
+        box-shadow:
+          0 30px 60px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+          0 0 90px rgba(124, 111, 255, 0.14);
+        animation: phoneFloat 6s ease-in-out infinite;
+      }
+
+      @keyframes phoneFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+          transform: translateY(-14px) rotate(0.6deg);
+        }
+      }
+
+      .phone-notch {
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 22px;
+        background: #08080c;
+        border-radius: 0 0 16px 16px;
+        z-index: 3;
+      }
+
+      .phone-screen {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 34px;
+        background: linear-gradient(165deg, var(--surface), var(--surface2));
+        overflow: hidden;
+        padding: 20px 16px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .app-statusbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--text2);
+        padding: 0 4px;
+      }
+
+      .app-statusbar-icons {
+        display: flex;
+        gap: 6px;
+        font-size: 10px;
+      }
+
+      .app-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 4px 4px 0;
+      }
+
+      .app-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent3));
+        flex-shrink: 0;
+      }
+
+      .app-header-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .app-header-sub {
+        font-size: 11px;
+        color: var(--text2);
+      }
+
+      .app-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 14px;
+      }
+
+      .app-card-label {
+        font-size: 10px;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .app-card-value {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text);
+        margin: 4px 0 12px;
+      }
+
+      .app-card-value span {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--accent3);
+        margin-left: 6px;
+      }
+
+      .app-chart {
+        display: flex;
+        align-items: flex-end;
+        gap: 6px;
+        height: 46px;
+      }
+
+      .app-chart-bar {
+        flex: 1;
+        border-radius: 4px 4px 0 0;
+        background: linear-gradient(180deg, var(--accent2), var(--accent));
+      }
+
+      .app-list-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+      }
+
+      .app-list-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+        background: rgba(124, 111, 255, 0.15);
+        color: var(--accent2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+
+      .app-list-icon.alt {
+        background: rgba(52, 211, 153, 0.15);
+        color: var(--accent3);
+      }
+
+      .app-list-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .app-list-sub {
+        font-size: 10px;
+        color: var(--text2);
+      }
+
+      .app-list-chevron {
+        margin-left: auto;
+        font-size: 10px;
+        color: var(--text3);
+      }
+
+      .app-tabbar {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-around;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+        color: var(--text3);
+        font-size: 14px;
+      }
+
+      .app-tabbar .active {
+        color: var(--accent2);
+      }
+
+      .phone-badge {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(18, 18, 26, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border2);
+        font-size: 11px;
+        font-family: "JetBrains Mono", monospace;
+        color: var(--text);
+        white-space: nowrap;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        z-index: 4;
+        animation: badgeFloat 5s ease-in-out infinite;
+      }
+
+      .badge-top {
+        top: 46px;
+        left: -34px;
+        animation-delay: 0s;
+      }
+
+      .badge-mid {
+        top: 250px;
+        right: -46px;
+        animation-delay: 1.5s;
+      }
+
+      .badge-bottom {
+        bottom: 70px;
+        left: -24px;
+        animation-delay: 3s;
+      }
+
+      @keyframes badgeFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
       }
 
       /* Mobile */
@@ -838,6 +1122,7 @@
         inset: 0;
         padding: 1px;
         border-radius: 22px;
+        pointer-events: none;
 
         background: linear-gradient(
           135deg,
@@ -964,6 +1249,30 @@
         font-weight: 700;
         margin-bottom: 0.6rem;
         color: white;
+      }
+
+      a.project-name {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        width: fit-content;
+        transition: color 0.25s ease;
+      }
+
+      a.project-name .project-link-icon {
+        font-size: 13px;
+        color: var(--text3);
+        transition: all 0.25s ease;
+      }
+
+      a.project-name:hover {
+        color: var(--accent2);
+      }
+
+      a.project-name:hover .project-link-icon {
+        color: var(--accent2);
+        transform: translate(2px, -2px);
       }
 
       .project-desc {
@@ -1217,6 +1526,7 @@
         position: absolute;
         inset: 0;
         padding: 1px;
+        pointer-events: none;
         border-radius: 28px;
         background: linear-gradient(135deg, #34d399, #7c6fff, #5eead4);
         mask:
@@ -1274,6 +1584,30 @@
         font-weight: 800;
         color: white;
         letter-spacing: -0.03em;
+      }
+
+      a.own-product-name {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        width: fit-content;
+        transition: color 0.25s ease;
+      }
+
+      a.own-product-name .project-link-icon {
+        font-size: 13px;
+        color: var(--text3);
+        transition: all 0.25s ease;
+      }
+
+      a.own-product-name:hover {
+        color: var(--accent2);
+      }
+
+      a.own-product-name:hover .project-link-icon {
+        color: var(--accent2);
+        transform: translate(2px, -2px);
       }
 
       .own-product-sub {
@@ -1968,30 +2302,112 @@
     <!-- HERO -->
     <section id="hero">
       <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span class="status-dot"></span>
-          Available for Senior Mobile Engineering Roles
+        <div class="hero-left">
+          <div class="hero-eyebrow">
+            <span class="status-dot"></span>
+            Available for Senior Mobile Engineering Roles
+          </div>
+
+          <h1 class="hero-name">
+            Building mobile apps that scale to
+            <span class="highlight">millions of users</span>
+          </h1>
+
+          <p class="hero-title">
+            Senior Mobile Developer • React Native • Flutter • Product Builder
+          </p>
+
+          <p class="hero-desc">
+            8+ years of experience building enterprise and consumer mobile
+            applications. Delivered production solutions for government
+            platforms, global enterprises, and startup products serving 14L+
+            users.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary"> View Projects </a>
+
+            <a href="#contact" class="btn-ghost"> Contact Me </a>
+          </div>
         </div>
 
-        <h1 class="hero-name">
-          Building mobile apps that scale to
-          <span class="highlight">millions of users</span>
-        </h1>
+        <div class="hero-right">
+          <div class="phone-mockup">
+            <span class="phone-badge badge-top">
+              <i class="devicon-react-original"></i> React Native
+            </span>
+            <span class="phone-badge badge-mid">
+              <i class="fab fa-swift"></i> Swift / Kotlin
+            </span>
+            <span class="phone-badge badge-bottom">
+              <i class="fas fa-code-branch"></i> CI/CD
+            </span>
 
-        <p class="hero-title">
-          Senior Mobile Developer • React Native • Flutter • Product Builder
-        </p>
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="app-statusbar">
+                  <span>9:41</span>
+                  <div class="app-statusbar-icons">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-battery-full"></i>
+                  </div>
+                </div>
 
-        <p class="hero-desc">
-          8+ years of experience building enterprise and consumer mobile
-          applications. Delivered production solutions for government platforms,
-          global enterprises, and startup products serving 14L+ users.
-        </p>
+                <div class="app-header">
+                  <div class="app-avatar"></div>
+                  <div>
+                    <div class="app-header-title">Dashboard</div>
+                    <div class="app-header-sub">Good morning, Subash</div>
+                  </div>
+                </div>
 
-        <div class="hero-actions">
-          <a href="#projects" class="btn-primary"> View Projects </a>
+                <div class="app-card">
+                  <div class="app-card-label">Weekly Active Users</div>
+                  <div class="app-card-value">14.2L <span>+8.4%</span></div>
+                  <div class="app-chart">
+                    <div class="app-chart-bar" style="height: 40%"></div>
+                    <div class="app-chart-bar" style="height: 65%"></div>
+                    <div class="app-chart-bar" style="height: 50%"></div>
+                    <div class="app-chart-bar" style="height: 80%"></div>
+                    <div class="app-chart-bar" style="height: 60%"></div>
+                    <div class="app-chart-bar" style="height: 95%"></div>
+                    <div class="app-chart-bar" style="height: 75%"></div>
+                  </div>
+                </div>
 
-          <a href="#contact" class="btn-ghost"> Contact Me </a>
+                <div class="app-list-item">
+                  <div class="app-list-icon">
+                    <i class="fas fa-bell"></i>
+                  </div>
+                  <div class="app-list-text">
+                    <div class="app-list-title">Build #482 succeeded</div>
+                    <div class="app-list-sub">Deployed to Play Store</div>
+                  </div>
+                  <i class="fas fa-chevron-right app-list-chevron"></i>
+                </div>
+
+                <div class="app-list-item">
+                  <div class="app-list-icon alt">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="app-list-text">
+                    <div class="app-list-title">4.4★ store rating</div>
+                    <div class="app-list-sub">2,300+ reviews</div>
+                  </div>
+                  <i class="fas fa-chevron-right app-list-chevron"></i>
+                </div>
+
+                <div class="app-tabbar">
+                  <i class="fas fa-house active"></i>
+                  <i class="fas fa-magnifying-glass"></i>
+                  <i class="fas fa-layer-group"></i>
+                  <i class="fas fa-user"></i>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2010,7 +2426,7 @@
         <div class="stat-icon">
           <i class="fas fa-users"></i>
         </div>
-        <div class="stat-num">14<span>L+</span></div>
+        <div class="stat-num">1<span>M+</span></div>
         <div class="stat-label">Users Served</div>
       </div>
 
@@ -2382,14 +2798,22 @@
             <div class="project-badge badge-stores">4.4★ Play / App Store</div>
           </div>
           <div class="featured-ribbon">Featured</div>
-          <div class="project-name">Kalanjiyam</div>
+          <a
+            class="project-name"
+            href="https://play.google.com/store/apps/details?id=com.ifhrms.kalanjiyam"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Kalanjiyam
+            <i class="fas fa-arrow-up-right-from-square project-link-icon"></i>
+          </a>
           <div class="project-desc">
             Govt. Employee &amp; Pension App for Tamil Nadu's Public
             Distribution System. UIDAI biometric auth for 14+ lakh users with
             20+ role-based modules.
           </div>
           <div class="project-metrics">
-            <div class="metric"><strong>14L+</strong>users</div>
+            <div class="metric"><strong>1M+</strong>users</div>
             <div class="metric"><strong>20+</strong>modules</div>
             <div class="metric"><strong>4.4★</strong>rating</div>
           </div>
@@ -2417,7 +2841,15 @@
             </div>
           </div>
           <div class="owner-ribbon">Owner</div>
-          <div class="project-name">Savordex</div>
+          <a
+            class="project-name"
+            href="https://play.google.com/store/apps/details?id=com.savordex"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Savordex
+            <i class="fas fa-arrow-up-right-from-square project-link-icon"></i>
+          </a>
           <div class="project-desc">
             Location-based food discovery platform with maps, geolocation,
             multimedia restaurant reviews, and real-time content feeds.
@@ -2446,7 +2878,15 @@
             </div>
             <div class="project-badge badge-live">Enterprise · Global</div>
           </div>
-          <div class="project-name">Prometheus Field Ops</div>
+          <a
+            class="project-name"
+            href="https://play.google.com/store/apps/details?id=com.ordital.pty.au"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            MDaaS Capture
+            <i class="fas fa-arrow-up-right-from-square project-link-icon"></i>
+          </a>
           <div class="project-desc">
             Offline-first industrial app for field operations across US, Spain,
             and China. Geo-filtered tasks, multi-lingual UI, Microsoft + AWS
@@ -2479,7 +2919,15 @@
               Live · Play / App Store
             </div>
           </div>
-          <div class="project-name">Albert — Invent</div>
+          <a
+            class="project-name"
+            href="https://apps.apple.com/us/app/albert-invent/id1502198563"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Albert — Invent
+            <i class="fas fa-arrow-up-right-from-square project-link-icon"></i>
+          </a>
           <div class="project-desc">
             Lab management companion app To access inventory, tasks, and
             real-time collaboration from your phone. Scan barcodes, upload
@@ -2556,7 +3004,18 @@
               />
             </div>
             <div>
-              <div class="own-product-name">Savordex</div>
+              <!-- <div class="own-product-name">Savordex</div> -->
+              <a
+                class="own-product-name"
+                href="https://play.google.com/store/apps/details?id=com.savordex"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Savordex
+                <i
+                  class="fas fa-arrow-up-right-from-square project-link-icon"
+                ></i>
+              </a>
               <div class="own-product-sub">Food Discovery Platform</div>
               <div
                 style="
@@ -2720,6 +3179,7 @@
               <div class="tools-cloud">
                 <span class="tool-chip">Redux</span>
                 <span class="tool-chip">BLoC</span>
+                <span class="tool-chip">Provider</span>
                 <span class="tool-chip">Context API</span>
               </div>
             </div>
