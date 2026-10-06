@@ -376,6 +376,24 @@
         box-shadow: 0 12px 25px rgba(124, 111, 255, 0.3);
       }
 
+      .btn-resume {
+        gap: 8px;
+        align-items: center;
+      }
+
+      .btn-resume i {
+        transition: transform 0.3s ease;
+      }
+
+      .btn-resume:hover i {
+        transform: translateY(3px);
+      }
+
+      .btn-resume.loading {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
       .btn-ghost {
         display: inline-flex;
         align-items: center;
@@ -2291,6 +2309,14 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#blogs">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li>
+          <a
+            href="./resume/Subash_Resume.pdf"
+            download
+            onclick="return downloadResume(event);"
+            >Resume</a
+          >
+        </li>
       </ul>
 
       <a href="mailto:maniansubash@gmail.com" class="nav-cta">
@@ -2328,6 +2354,15 @@
             <a href="#projects" class="btn-primary"> View Projects </a>
 
             <a href="#contact" class="btn-ghost"> Contact Me </a>
+
+            <a
+              href="./resume/Subash_Resume.pdf"
+              download="Subash_Resume.pdf"
+              class="btn-ghost btn-resume"
+              onclick="return downloadResume(event);"
+            >
+              <i class="fas fa-download"></i> Download Resume
+            </a>
           </div>
         </div>
 
@@ -3446,6 +3481,16 @@
             <i class="fas fa-paper-plane"></i>
             Let's Connect
           </a>
+
+          <a
+            href="./resume/Subash_Resume.pdf"
+            download="Subash_Resume.pdf"
+            class="btn-ghost btn-resume"
+            onclick="return downloadResume(event);"
+          >
+            <i class="fas fa-download"></i>
+            Download Resume
+          </a>
         </div>
       </div>
     </section>
@@ -3518,6 +3563,41 @@
           threshold: 0.15,
         },
       );
+
+      const RESUME_PATH = "./resume/Subash_Resume.pdf";
+      const RESUME_NAME = "Subash_Resume.pdf";
+
+      async function downloadResume(event) {
+        event.preventDefault();
+        const btn = event.currentTarget;
+        btn.classList.add("loading");
+
+        try {
+          const res = await fetch(RESUME_PATH);
+          if (!res.ok) throw new Error("Resume not found");
+
+          const blob = await res.blob();
+          const url = URL.createObjectURL(blob);
+
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = RESUME_NAME;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+
+          URL.revokeObjectURL(url);
+        } catch (err) {
+          console.error(err);
+          alert(
+            "Sorry, the resume couldn't be downloaded right now. Please email me at maniansubash@gmail.com.",
+          );
+        } finally {
+          btn.classList.remove("loading");
+        }
+
+        return false;
+      }
 
       document
         .querySelectorAll(".fade-in,.fade-left,.fade-right,.zoom-in")
