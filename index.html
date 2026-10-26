@@ -2394,7 +2394,9 @@
                   <div class="app-avatar"></div>
                   <div>
                     <div class="app-header-title">Dashboard</div>
-                    <div class="app-header-sub">Good morning, Subash</div>
+                    <div class="app-header-sub" id="appGreeting" aria-live="polite">
+                      Welcome, Subash
+                    </div>
                   </div>
                 </div>
 
@@ -3537,6 +3539,20 @@
     </footer>
 
     <script>
+      function updateDashboardGreeting() {
+        const greeting = document.getElementById("appGreeting");
+        if (!greeting) return;
+
+        const hour = new Date().getHours();
+        const timeOfDay =
+          hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
+
+        greeting.textContent = `${timeOfDay}, Subash`;
+      }
+
+      updateDashboardGreeting();
+      window.setInterval(updateDashboardGreeting, 60 * 1000);
+
       window.addEventListener("scroll", () => {
         const scrollTop = window.scrollY;
 
