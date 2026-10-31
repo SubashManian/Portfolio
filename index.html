@@ -2407,11 +2407,10 @@
           font-size: 9px;
         }
         .nav-links {
-          gap: 12px;
-          margin-right: 12px;
+          display: none;
         }
-        .nav-links a {
-          font-size: 10px;
+        .nav-brand {
+          min-width: 0;
         }
         .nav-resume {
           min-width: auto;
@@ -2424,14 +2423,13 @@
           padding: 8px 10px;
         }
         .nav-links {
-          gap: 8px;
-          margin-right: 8px;
-        }
-        .nav-links a {
-          font-size: 9px;
+          display: none;
         }
         .brand-copy small {
           display: none;
+        }
+        .brand-copy strong {
+          white-space: nowrap;
         }
         .nav-resume {
           gap: 5px;
@@ -3023,6 +3021,32 @@
         }
       }
       @media (max-width: 700px) {
+        #hero {
+          isolation: isolate;
+        }
+        #hero .hero-content {
+          display: block;
+        }
+        #hero .hero-left {
+          position: relative;
+          z-index: 1;
+        }
+        #hero .hero-right {
+          position: absolute;
+          top: 50%;
+          right: -115px;
+          z-index: 0;
+          width: 280px;
+          min-height: 0;
+          height: 572px;
+          overflow: visible;
+          opacity: 0.14;
+          pointer-events: none;
+          transform: translateY(-50%);
+        }
+        #hero .phone-mockup {
+          transform-origin: center;
+        }
         .hero-left {
           max-width: 100%;
         }
@@ -4732,24 +4756,61 @@
         }
       }
       @media (max-width: 600px) {
+        #own-product > .fade-in:first-child .section-heading {
+          font-size: clamp(18px, 5vw, 21px);
+          padding-left: 40px;
+          line-height: 1.3;
+        }
+        #own-product > .fade-in:first-child .section-sub {
+          font-size: 13px;
+        }
+        #own-product .own-product-card {
+          gap: 18px;
+          padding: 16px;
+          border-radius: 15px;
+        }
         #own-product .own-product-left {
-          grid-template-columns: minmax(0, 1fr);
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        #own-product .own-product-icon-wrap {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          width: 100%;
+          margin: 0 0 4px;
         }
         #own-product .own-product-icon {
-          grid-column: 1;
-          grid-row: auto;
-          height: 190px;
-          min-height: 190px;
+          flex: 0 0 64px;
+          width: 64px;
+          height: 64px;
+          min-height: 0;
+          overflow: hidden;
+          border-radius: 16px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.04);
         }
         #own-product .own-product-icon img {
-          transform: scale(1.2);
+          transform: none;
+          object-fit: cover;
         }
-        #own-product .own-product-icon-wrap > div:not(.own-product-icon),
-        #own-product .own-product-desc,
+        #own-product .own-product-icon-wrap > div:not(.own-product-icon) {
+          flex: 1;
+          min-width: 0;
+        }
+        #own-product .own-product-name {
+          font-size: 21px;
+        }
+        #own-product .own-product-desc {
+          width: 100%;
+          font-size: 12px;
+          line-height: 1.55;
+        }
         #own-product .savordex-achievement,
-        #own-product .own-product-left > .exp-tags {
-          grid-column: 1;
-          grid-row: auto;
+        #own-product .own-product-left > .exp-tags,
+        #own-product .own-product-stat-grid {
+          width: 100%;
         }
         #own-product .own-product-right {
           display: flex;
